@@ -8,7 +8,9 @@ public class Joueur {
         int categorie;
         public boolean utilise = false;
 
-    public Joueur(){}
+    public Joueur(){
+        this("nom","prenom",1);
+    }
 
     public Joueur(String nom, String prenom, int categorie){
             this.nbreJoueur++;

@@ -38,31 +38,35 @@ public class Match extends Thread {
 
     public Match(Joueur joueur1, Joueur joueur2, ListeJoueur listejoueur) {
 
-        this.listejoueur = listejoueur;
-        if(joueur1.getCategorie()>= joueur2.getCategorie()) {
-            this.joueur1 = joueur1;
-            this.joueur2 = joueur2;
-        }else{
-            this.joueur1 = joueur2;
-            this.joueur2 = joueur1;
-        }
-        this.machtid = nombredematch++;
+        if (joueur1!=null&&joueur2!=null ) {
+            this.listejoueur = listejoueur;
+            if (joueur1.getCategorie() >= joueur2.getCategorie()) {
+                this.joueur1 = joueur1;
+                this.joueur2 = joueur2;
+            } else {
+                this.joueur1 = joueur2;
+                this.joueur2 = joueur1;
+            }
+            pourcentage = tableau[joueur1.getCategorie()][joueur2.getCategorie()];
+            this.machtid = nombredematch++;
+            joueurservice = joueur1;
 
-        service = joueur1;
+            service = joueur1;
+        }
         pointjoueur1 = 0;
         pointjoueur2 = 0;
-        nombreseptjoueur1 = 1;
-        nombreseptjoueur2 = 1;
+        nombreseptjoueur1 = 0;
+        nombreseptjoueur2 = 0;
         pointseptjoueur1 =0;
         pointseptjoueur2 = 0;
-        pourcentage = tableau[joueur1.getCategorie()][joueur2.getCategorie()];
+
         gagnant = null;
         chronometre = new Chronometre();
-        joueurservice = joueur1;
+
 
     }
 
-    public int incrementerPoint(int pointjoueur) {
+    public static int incrementerPoint(int pointjoueur) {
         if (pointjoueur == 0) {
             return 15;
         }
@@ -419,6 +423,134 @@ public class Match extends Thread {
         }
 
         return true;
+    }
+
+    public int getMachtid() {
+        return machtid;
+    }
+
+    public int getNbparijoueur1() {
+        return nbparijoueur1;
+    }
+
+    public int getNbparijoueur2() {
+        return nbparijoueur2;
+    }
+
+    public ListeJoueur getListejoueur() {
+        return listejoueur;
+    }
+
+    public float getMisejoueur1() {
+        return misejoueur1;
+    }
+
+    public float getMisejoueur2() {
+        return misejoueur2;
+    }
+
+    public Chronometre getChronometre() {
+        return chronometre;
+    }
+
+    public static void setNombredematch(int nombredematch) {
+        Match.nombredematch = nombredematch;
+    }
+
+    public void setMachtid(int machtid) {
+        this.machtid = machtid;
+    }
+
+    public void setJoueur1(Joueur joueur1) {
+        this.joueur1 = joueur1;
+    }
+
+    public void setJoueur2(Joueur joueur2) {
+        this.joueur2 = joueur2;
+    }
+
+    public void setService(Joueur service) {
+        this.service = service;
+    }
+
+    public void setGagnant(Joueur gagnant) {
+        this.gagnant = gagnant;
+    }
+
+    public void setNbparijoueur1(int nbparijoueur1) {
+        this.nbparijoueur1 = nbparijoueur1;
+    }
+
+    public void setNbparijoueur2(int nbparijoueur2) {
+        this.nbparijoueur2 = nbparijoueur2;
+    }
+
+    public void setJoueurservice(Joueur joueurservice) {
+        this.joueurservice = joueurservice;
+    }
+
+    public void setPointjoueur1(int pointjoueur1) {
+        this.pointjoueur1 = pointjoueur1;
+    }
+
+    public void setPointjoueur2(int pointjoueur2) {
+        this.pointjoueur2 = pointjoueur2;
+    }
+
+    public void setNombreseptjoueur1(int nombreseptjoueur1) {
+        this.nombreseptjoueur1 = nombreseptjoueur1;
+    }
+
+    public void setNombreseptjoueur2(int nombreseptjoueur2) {
+        this.nombreseptjoueur2 = nombreseptjoueur2;
+    }
+
+    public void setPointseptjoueur1(int pointseptjoueur1) {
+        this.pointseptjoueur1 = pointseptjoueur1;
+    }
+
+    public void setPointseptjoueur2(int pointseptjoueur2) {
+        this.pointseptjoueur2 = pointseptjoueur2;
+    }
+
+    public void setPourcentage(int pourcentage) {
+        this.pourcentage = pourcentage;
+    }
+
+    public void setNbsept(int nbsept) {
+        this.nbsept = nbsept;
+    }
+
+    public void setListejoueur(ListeJoueur listejoueur) {
+        this.listejoueur = listejoueur;
+    }
+
+    public void setMisejoueur1(float misejoueur1) {
+        this.misejoueur1 = misejoueur1;
+    }
+
+    public void setMisejoueur2(float misejoueur2) {
+        this.misejoueur2 = misejoueur2;
+    }
+
+    public void setNombreevenement(int nombreevenement) {
+        this.nombreevenement = nombreevenement;
+    }
+
+    public void setNomJoueurEvenement(String nomJoueurEvenement) {
+        this.nomJoueurEvenement = nomJoueurEvenement;
+    }
+
+    public void setGrille(int[][] grille) {
+        this.grille = grille;
+    }
+
+    public void setFin(boolean fin) {
+        this.fin = fin;
+    }
+
+    public void setChronometre(Chronometre chronometre) {
+        this.chronometre = chronometre;
     }
 
 }
